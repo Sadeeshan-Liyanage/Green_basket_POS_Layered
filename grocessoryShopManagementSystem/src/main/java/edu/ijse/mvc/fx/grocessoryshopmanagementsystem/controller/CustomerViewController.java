@@ -4,7 +4,7 @@ import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.App;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.bo.BOFactory;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.bo.custom.CustomerBO;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.dto.CustomerDTO;
-import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.model.CustomerModel;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -114,7 +114,7 @@ public class CustomerViewController {
         customerNumber.clear(); customerAddress.clear();
     }
 
-    CustomerModel CustomerModel = new CustomerModel();
+
 
     @FXML
     void handlePrintReport(ActionEvent event) {

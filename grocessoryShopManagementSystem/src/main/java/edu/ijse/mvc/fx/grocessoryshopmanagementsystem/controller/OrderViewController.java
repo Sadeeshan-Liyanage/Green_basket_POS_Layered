@@ -5,7 +5,7 @@ import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.bo.BOFactory;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.bo.custom.OrderBO;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.dto.OrderDTO;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.entity.OrderDetail;
-import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.model.OrderModel;
+
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.tm.ItemTM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

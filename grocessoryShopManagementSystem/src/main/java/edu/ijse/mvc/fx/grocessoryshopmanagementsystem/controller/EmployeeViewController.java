@@ -4,7 +4,7 @@ import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.App;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.bo.BOFactory;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.bo.custom.EmployeeBO;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.dto.EmployeeDTO;
-import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.model.EmployeeModel;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

@@ -3,9 +3,9 @@ package edu.ijse.mvc.fx.grocessoryshopmanagementsystem.controller;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.App;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.bo.BOFactory;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.bo.custom.ItemBO;
-import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.dao.DAOFactory;
+
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.dto.ItemDTO;
-import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.model.ItemModel;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

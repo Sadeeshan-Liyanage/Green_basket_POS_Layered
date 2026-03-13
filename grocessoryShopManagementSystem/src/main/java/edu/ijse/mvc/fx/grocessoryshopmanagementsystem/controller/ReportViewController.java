@@ -5,7 +5,7 @@ import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.bo.BOFactory;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.bo.custom.ReportBO;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.dao.DAOFactory;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.dto.ReportDTO;
-import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.model.ReportModel;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

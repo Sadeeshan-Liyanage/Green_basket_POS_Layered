@@ -6,8 +6,7 @@ import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.bo.custom.ItemBO;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.bo.custom.OrderBO;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.db.DBConnection;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.dto.ItemDTO;
-import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.model.ItemModel;
-import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.model.OrderModel;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
@@ -207,7 +206,7 @@ public class DashboardController {
 
     private void loadDashboardCards() {
         try {
-            ItemModel itemModel = new ItemModel();
+
 
             lblTotalItems.setText(String.format("%04d", itemBO.getTotalItemCount()));
             lblLowStock.setText(String.format("%02d", itemBO.getLowStockCount()));
@@ -220,7 +219,7 @@ public class DashboardController {
 
     private void loadLowStockAlerts() {
         try {
-            ItemModel itemModel = new ItemModel();
+
             ArrayList<ItemDTO> lowStockList = itemBO.getLowStockItems();
 
             Label[] itemLabels = {lblLowItem1, lblLowItem2, lblLowItem3, lblLowItem4};
