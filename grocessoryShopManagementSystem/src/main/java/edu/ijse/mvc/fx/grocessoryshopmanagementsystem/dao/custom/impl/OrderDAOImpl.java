@@ -4,7 +4,8 @@ import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.dao.custom.OrderDAO;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.db.DBConnection;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.entity.Order;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.entity.OrderDetail;
-import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.util.CrudUtil;
+//import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.util.CrudUtil;
+import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.dao.CRUDUtil;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
@@ -17,7 +18,7 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public ArrayList<Order> getAll() throws Exception {
         ArrayList<Order> list = new ArrayList<>();
-        ResultSet rst = CrudUtil.executeQuery("SELECT * FROM Orders");
+        ResultSet rst = CRUDUtil.executeQuery("SELECT * FROM Orders");
         while (rst.next()) {
             list.add(new Order(
                     rst.getInt("order_Id"),
@@ -31,7 +32,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public boolean save(Order order) throws Exception {
-        return CrudUtil.execute(
+        return CRUDUtil.execute(
                 "INSERT INTO Orders (orderDate, customerId, userId) VALUES (?, ?, ?)",
                 order.getOrderDate(), order.getCustomerId(), order.getUserId()
         );
@@ -39,7 +40,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public boolean update(Order order) throws Exception {
-        return CrudUtil.execute(
+        return CRUDUtil.execute(
                 "UPDATE Orders SET orderDate=?, customerId=?, userId=? WHERE order_Id=?",
                 order.getOrderDate(), order.getCustomerId(), order.getUserId(), order.getOrderId()
         );
@@ -47,12 +48,12 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public boolean delete(String id) throws Exception {
-        return CrudUtil.execute("DELETE FROM Orders WHERE order_Id=?", Integer.parseInt(id));
+        return CRUDUtil.execute("DELETE FROM Orders WHERE order_Id=?", Integer.parseInt(id));
     }
 
     @Override
     public Order search(String id) throws Exception {
-        ResultSet rst = CrudUtil.executeQuery("SELECT * FROM Orders WHERE order_Id=?", Integer.parseInt(id));
+        ResultSet rst = CRUDUtil.executeQuery("SELECT * FROM Orders WHERE order_Id=?", Integer.parseInt(id));
         if (rst.next()) {
             return new Order(
                     rst.getInt("order_Id"),
@@ -116,14 +117,14 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public String getNextOrderId() throws Exception {
-        ResultSet rst = CrudUtil.executeQuery("SELECT order_Id FROM Orders ORDER BY order_Id DESC LIMIT 1");
+        ResultSet rst = CRUDUtil.executeQuery("SELECT order_Id FROM Orders ORDER BY order_Id DESC LIMIT 1");
         if (rst.next()) return String.valueOf(rst.getInt(1) + 1);
         return "1";
     }
 
     @Override
     public String getCustomerIdByName(String name) throws Exception {
-        ResultSet rst = CrudUtil.executeQuery(
+        ResultSet rst = CRUDUtil.executeQuery(
                 "SELECT customer_id FROM Customer WHERE customerName = ? LIMIT 1", name);
         if (rst.next()) return String.valueOf(rst.getInt(1));
         return null;
@@ -131,7 +132,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public String[] getItemDetails(String itemId) throws Exception {
-        ResultSet rst = CrudUtil.executeQuery(
+        ResultSet rst = CRUDUtil.executeQuery(
                 "SELECT itemName, unitPrice FROM Item WHERE itemId = ?", itemId);
         if (rst.next()) return new String[]{rst.getString(1), rst.getString(2)};
         return null;
@@ -140,7 +141,7 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public Map<String, Integer> getMonthlyOrderCount() throws Exception {
         Map<String, Integer> chartData = new LinkedHashMap<>();
-        ResultSet rs = CrudUtil.executeQuery(
+        ResultSet rs = CRUDUtil.executeQuery(
                 "SELECT MONTHNAME(STR_TO_DATE(orderDate, '%Y-%m-%d')) AS month_name, " +
                         "COUNT(order_Id) AS order_count FROM Orders " +
                         "GROUP BY month_name, MONTH(STR_TO_DATE(orderDate, '%Y-%m-%d')) " +

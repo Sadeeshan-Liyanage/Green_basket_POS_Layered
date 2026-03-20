@@ -20,4 +20,15 @@ public class CRUDUtil {
             return (T)(Boolean)(pstm.executeUpdate() > 0);
         }
     }
+
+    public static ResultSet executeQuery(String sql, Object... params) throws Exception {  // ✅ new method
+        Connection conn = DBConnection.getInstance().getConnection();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+
+        for (int i = 0; i < params.length; i++) {
+            pstm.setObject(i + 1, params[i]);
+        }
+
+        return pstm.executeQuery();
+    }
 }

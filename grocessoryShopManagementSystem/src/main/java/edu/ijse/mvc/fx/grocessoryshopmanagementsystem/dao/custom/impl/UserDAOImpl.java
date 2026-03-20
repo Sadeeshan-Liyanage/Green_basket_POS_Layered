@@ -3,7 +3,8 @@ package edu.ijse.mvc.fx.grocessoryshopmanagementsystem.dao.custom.impl;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.dao.custom.UserDAO;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.db.DBConnection;
 import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.entity.User;
-import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.util.CrudUtil;
+//import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.util.CrudUtil;
+import edu.ijse.mvc.fx.grocessoryshopmanagementsystem.dao.CRUDUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,7 +33,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean update(User entity) throws Exception {
-        return CrudUtil.execute(
+        return CRUDUtil.execute(
                 "UPDATE User SET userName=?, password=?, role=? WHERE UserID=?",
                 entity.getUserName(),
                 entity.getPassword(),
@@ -43,7 +44,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean delete(int id) throws Exception {
-        return CrudUtil.execute(
+        return CRUDUtil.execute(
                 "DELETE FROM User WHERE UserID=?",
                 id
         );
@@ -51,7 +52,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User search(int id) throws Exception {
-        ResultSet rs = CrudUtil.executeQuery(
+        ResultSet rs = CRUDUtil.executeQuery(
                 "SELECT * FROM User WHERE UserID=?",
                 id
         );
@@ -69,7 +70,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public ArrayList<User> getAll() throws Exception {
         ArrayList<User> list = new ArrayList<>();
-        ResultSet rs = CrudUtil.executeQuery("SELECT * FROM User");
+        ResultSet rs = CRUDUtil.executeQuery("SELECT * FROM User");
         while (rs.next()) {
             list.add(new User(
                     rs.getInt("UserID"),
@@ -83,7 +84,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public int getNextId() throws Exception {
-        ResultSet rs = CrudUtil.executeQuery("SELECT MAX(UserID) FROM User");
+        ResultSet rs = CRUDUtil.executeQuery("SELECT MAX(UserID) FROM User");
         return rs.next() ? rs.getInt(1) + 1 : 1;
     }
 
